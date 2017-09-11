@@ -1,0 +1,16 @@
+C:\Users\PCHARDWARE\Desktop\Tutorijali\test\test\bin\Debug\test.exe.config
+C:\Users\PCHARDWARE\Desktop\Tutorijali\test\test\bin\Debug\test.exe
+C:\Users\PCHARDWARE\Desktop\Tutorijali\test\test\bin\Debug\test.pdb
+C:\Users\PCHARDWARE\Desktop\Tutorijali\test\test\bin\Debug\EntityFramework.dll
+C:\Users\PCHARDWARE\Desktop\Tutorijali\test\test\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\PCHARDWARE\Desktop\Tutorijali\test\test\bin\Debug\EntityFramework.xml
+C:\Users\PCHARDWARE\Desktop\Tutorijali\test\test\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\PCHARDWARE\Desktop\Tutorijali\test\test\obj\Debug\test.csprojResolveAssemblyReference.cache
+C:\Users\PCHARDWARE\Desktop\Tutorijali\test\test\obj\Debug\test.Form1.resources
+C:\Users\PCHARDWARE\Desktop\Tutorijali\test\test\obj\Debug\test.Properties.Resources.resources
+C:\Users\PCHARDWARE\Desktop\Tutorijali\test\test\obj\Debug\test.csproj.GenerateResource.Cache
+C:\Users\PCHARDWARE\Desktop\Tutorijali\test\test\obj\Debug\test.exe
+C:\Users\PCHARDWARE\Desktop\Tutorijali\test\test\obj\Debug\test.pdb
+C:\Users\PCHARDWARE\Desktop\Tutorijali\test\test\obj\Debug\test.Migrations.init.resources
+C:\Users\PCHARDWARE\Desktop\Tutorijali\test\test\obj\Debug\test.Migrations.init2.resources
+C:\Users\PCHARDWARE\Desktop\Tutorijali\test\test\obj\Debug\test.Migrations._3.resources
