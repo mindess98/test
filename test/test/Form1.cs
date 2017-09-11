@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace test
 {
-    public partial class Form1 : Form
+    public partial class Hotel : Form
     {
-        public Form1()
+        public Hotel()
         {
             InitializeComponent();
         }
@@ -26,6 +26,29 @@ namespace test
             context.Rooms.Add(r);
             context.SaveChanges();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MakeReservation mr = new MakeReservation();
+            mr.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ListGuests lg = new ListGuests();
+            lg.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ListRooms lr = new ListRooms();
+            lr.Show();
         }
     }
 }
