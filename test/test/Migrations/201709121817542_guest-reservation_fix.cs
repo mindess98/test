@@ -3,7 +3,7 @@ namespace test.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class roomtypes : DbMigration
+    public partial class guestreservation_fix : DbMigration
     {
         public override void Up()
         {
@@ -12,24 +12,21 @@ namespace test.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        ReservationId = c.Int(nullable: false),
                         Name = c.String(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Reservations", t => t.ReservationId, cascadeDelete: true)
-                .Index(t => t.ReservationId);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Reservations",
                 c => new
                     {
                         Id = c.Int(nullable: false),
-                        RoomId = c.Int(nullable: false),
+                        GuestId = c.Int(nullable: false),
                         From = c.DateTime(nullable: false),
                         To = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Rooms", t => t.Id)
+                .ForeignKey("dbo.Guests", t => t.Id)
                 .Index(t => t.Id);
             
             CreateTable(
@@ -41,9 +38,13 @@ namespace test.Migrations
                         Capacity = c.Int(nullable: false),
                         ReservationId = c.Int(),
                         RoomTypeId = c.Int(nullable: false),
+                        RoomImage = c.Binary(),
+                        Name = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Reservations", t => t.ReservationId)
                 .ForeignKey("dbo.RoomTypes", t => t.RoomTypeId, cascadeDelete: true)
+                .Index(t => t.ReservationId)
                 .Index(t => t.RoomTypeId);
             
             CreateTable(
@@ -60,12 +61,12 @@ namespace test.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Guests", "ReservationId", "dbo.Reservations");
             DropForeignKey("dbo.Rooms", "RoomTypeId", "dbo.RoomTypes");
-            DropForeignKey("dbo.Reservations", "Id", "dbo.Rooms");
+            DropForeignKey("dbo.Rooms", "ReservationId", "dbo.Reservations");
+            DropForeignKey("dbo.Reservations", "Id", "dbo.Guests");
             DropIndex("dbo.Rooms", new[] { "RoomTypeId" });
+            DropIndex("dbo.Rooms", new[] { "ReservationId" });
             DropIndex("dbo.Reservations", new[] { "Id" });
-            DropIndex("dbo.Guests", new[] { "ReservationId" });
             DropTable("dbo.RoomTypes");
             DropTable("dbo.Rooms");
             DropTable("dbo.Reservations");

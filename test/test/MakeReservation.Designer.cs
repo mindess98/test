@@ -1,4 +1,6 @@
-﻿namespace test
+﻿using System;
+
+namespace test
 {
     partial class MakeReservation
     {
@@ -68,6 +70,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(218, 20);
             this.textBox2.TabIndex = 0;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // button4
             // 
@@ -77,6 +80,7 @@
             this.button4.TabIndex = 1;
             this.button4.Text = "Commit Reservation";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -103,6 +107,7 @@
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker3.TabIndex = 5;
+            this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
             // 
             // dateTimePicker4
             // 
@@ -110,6 +115,7 @@
             this.dateTimePicker4.Name = "dateTimePicker4";
             this.dateTimePicker4.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker4.TabIndex = 6;
+            this.dateTimePicker4.ValueChanged += new System.EventHandler(this.dateTimePicker4_ValueChanged);
             // 
             // label5
             // 
@@ -194,6 +200,11 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            
         }
 
         #endregion

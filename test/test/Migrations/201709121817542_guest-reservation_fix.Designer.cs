@@ -7,13 +7,13 @@ namespace test.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class roomImage : IMigrationMetadata
+    public sealed partial class guestreservation_fix : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(roomImage));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(guestreservation_fix));
         
         string IMigrationMetadata.Id
         {
-            get { return "201709121429361_roomImage"; }
+            get { return "201709121817542_guest-reservation_fix"; }
         }
         
         string IMigrationMetadata.Source

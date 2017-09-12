@@ -72,7 +72,7 @@ namespace test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Room r = new Room { Capacity = int.Parse(textBox2.Text), RoomTypeId = (int)comboBox1.SelectedValue, Price = decimal.Parse(textBox1.Text), RoomImage = imageBytes };
+            Room r = new Room { Capacity = int.Parse(textBox2.Text), RoomTypeId = (int)comboBox1.SelectedValue, Price = decimal.Parse(textBox1.Text), RoomImage = imageBytes, Name = textBox3.Text };
             context.Rooms.Add(r);
             context.SaveChanges();
 
@@ -90,6 +90,11 @@ namespace test
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
         }

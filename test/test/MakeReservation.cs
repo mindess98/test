@@ -16,6 +16,47 @@ namespace test
 
         private BindingList<Room> rooms = new BindingList<Room>();
 
+        private int daysDifference = 1;
+        public int DaysDifference
+        {
+            get { return daysDifference; }
+            set
+            {
+                int preliminary = (dateTimePicker4.Value - dateTimePicker3.Value).Days;
+
+                if (daysDifference != 0)
+                {
+                    if (preliminary <= 0)
+                    {
+                        dateTimePicker4.Value = dateTimePicker3.Value + new TimeSpan(1, 0, 0, 0);
+                        PriceTotal /= daysDifference;
+                        daysDifference = 1;
+                        PriceTotal *= daysDifference;
+                    }
+                    else
+                    {
+                        PriceTotal /= daysDifference;
+                        daysDifference = preliminary;
+                        PriceTotal *= daysDifference;
+                    }
+                }
+                else
+                {
+                    if (preliminary <= 0)
+                    {
+                        dateTimePicker4.Value = dateTimePicker3.Value + new TimeSpan(1, 0, 0, 0);
+                        daysDifference = 1;
+                    }
+                    else
+                    {
+                        daysDifference = preliminary;
+                        PriceTotal *= daysDifference;
+                    }
+                }
+
+            }
+        }
+
         private decimal priceTotal;
         public decimal PriceTotal
         {
@@ -47,6 +88,8 @@ namespace test
             listBox2.DataSource = rooms;
 
             CreateRoomTypeTabs();
+
+            dateTimePicker4.Value = dateTimePicker3.Value + new TimeSpan(1, 0, 0, 0);
 
             AddRoomsToTabs();
 
@@ -92,7 +135,7 @@ namespace test
             Room r = (Room)b.Tag;
 
             rooms.Add(r);
-            PriceTotal += r.Price;
+            PriceTotal += r.Price * DaysDifference;
             CapacityTotal += r.Capacity;
             listBox2.SelectedIndex = listBox2.Items.Count - 1;
 
@@ -109,9 +152,9 @@ namespace test
             string roomPrice = string.Format("{0:c2}", ((Room)e.ListItem).Price);
             ListBox lb = (ListBox)sender;
 
-            string padding = new string(' ', 50 - roomType.Length - roomPrice.Length);
+            string padding = new string(' ', 45 - roomType.Length - roomPrice.Length);
 
-            e.Value = string.Format("{0}{2}{1}", roomType, roomPrice, padding);
+            e.Value = string.Format("{0}{2}{1}/Night", roomType, roomPrice, padding);
             
 
         }
@@ -126,7 +169,7 @@ namespace test
             if (rooms.Count == 0) return;
             Room r = (Room)listBox2.SelectedItem;
             int i = rooms.IndexOf(r);
-            PriceTotal -= r.Price;
+            PriceTotal -= r.Price * DaysDifference;
             CapacityTotal -= r.Capacity;
             rooms.Remove(r);
             if (i >= rooms.Count) i = rooms.Count - 1;
@@ -138,6 +181,40 @@ namespace test
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dateTimePicker4_ValueChanged(object sender, EventArgs e)
+        {
+            DaysDifference = (dateTimePicker4.Value - dateTimePicker3.Value).Days;
+            
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Reservation re = new Reservation();
+            re.From = dateTimePicker3.Value;
+            re.To = dateTimePicker4.Value;
+            re.Rooms = rooms.ToList();
+
+            Guest g = new Guest();
+            g.Name = textBox2.Text;
+            g.Reservation = re;
+
+            re.Guest = g;
+
+            context.Guests.Add(g);
+            context.Reservations.Add(re);
+            context.SaveChanges();
+
+        }
+
+        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        {
+            if(dateTimePicker4.Value < dateTimePicker3.Value)
+            {
+                dateTimePicker3.Value = dateTimePicker4.Value - new TimeSpan(1, 0, 0, 0);
+            }
+            DaysDifference = 1;
         }
     }
 }
