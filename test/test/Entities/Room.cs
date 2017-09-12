@@ -12,5 +12,6 @@ namespace test
         public int RoomTypeId { get; set; }
         public RoomType RoomType { get; set; }
         public byte[] RoomImage { get; set; }
+        public string Name { get; set; }
     }
 }

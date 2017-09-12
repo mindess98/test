@@ -76,6 +76,8 @@ namespace test
             context.Rooms.Add(r);
             context.SaveChanges();
 
+            MessageBox.Show("Added room successfully");
+
             textBox1.Text = "";
             textBox2.Text = "";
             pictureBox1.Image = null;

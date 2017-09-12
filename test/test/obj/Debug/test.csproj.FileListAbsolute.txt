@@ -33,3 +33,5 @@ C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.ListRooms.resources
 C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.AddRoom.resources
 C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.Migrations.roomtypes.resources
 C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.Migrations.roomImage.resources
+C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.Migrations.pricefixfix.resources
+C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.Migrations.roomname.resources

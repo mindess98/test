@@ -98,6 +98,14 @@
     <Compile Include="Migrations\201709121429361_roomImage.Designer.cs">
       <DependentUpon>201709121429361_roomImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709121525191_price-fix-fix.cs" />
+    <Compile Include="Migrations\201709121525191_price-fix-fix.Designer.cs">
+      <DependentUpon>201709121525191_price-fix-fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709121558023_room-name.cs" />
+    <Compile Include="Migrations\201709121558023_room-name.Designer.cs">
+      <DependentUpon>201709121558023_room-name.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,6 +129,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709121429361_roomImage.resx">
       <DependentUpon>201709121429361_roomImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709121525191_price-fix-fix.resx">
+      <DependentUpon>201709121525191_price-fix-fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709121558023_room-name.resx">
+      <DependentUpon>201709121558023_room-name.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

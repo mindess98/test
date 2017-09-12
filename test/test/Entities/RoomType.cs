@@ -12,5 +12,6 @@ namespace test
         public string Name { get; set; }
         public int StarValue { get; set; }
         public List<Room> Rooms { get; set; }
+
     }
 }

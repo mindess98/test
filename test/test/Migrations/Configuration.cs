@@ -31,21 +31,20 @@ namespace test.Migrations
             RoomType rt2 = new RoomType { Name = "Economy", StarValue = 3 };
             RoomType rt3 = new RoomType { Name = "Elegant", StarValue = 4 };
 
-            context.RoomTypes.AddOrUpdate(x => x.Id,
+            context.RoomTypes.AddOrUpdate(x => x.Name,
                 rt1,
                 rt2,
                 rt3
                 );
 
             context.Rooms.AddOrUpdate(x => x.Id,
-                new Room { Price = 100, RoomType = rt2, Capacity = 3 },
-                new Room { Price = 120, RoomType = rt2, Capacity = 4 },
-                new Room { Price = 130, RoomType = rt2, Capacity = 5 },
-                new Room { Price = 250, RoomType = rt3, Capacity = 2 },
-                new Room { Price = 350, RoomType = rt3, Capacity = 4 },
-                new Room { Price = 900, RoomType = rt1, Capacity = 4 },
-                new Room { Price = 1200, RoomType = rt1, Capacity = 6 });
-
+                new Room { Price = 100, RoomType = rt2, Capacity = 3 , Name = "Twin+ Guest Room"},
+                new Room { Price = 120, RoomType = rt2, Capacity = 4 , Name = "Family Guest Room"},
+                new Room { Price = 130, RoomType = rt2, Capacity = 5 , Name = "Large Family Room"},
+                new Room { Price = 250, RoomType = rt3, Capacity = 2 , Name = "King Guest Room"},
+                new Room { Price = 350, RoomType = rt3, Capacity = 4 , Name = "Two Queen Bed Room"},
+                new Room { Price = 900, RoomType = rt1, Capacity = 4 , Name = "Executive Suite"},
+                new Room { Price = 1200, RoomType = rt1, Capacity = 6, Name = "Presidential Suite"});
         }
     }
 }
