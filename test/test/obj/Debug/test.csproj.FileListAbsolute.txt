@@ -26,10 +26,10 @@ C:\Users\PCHARDWARE\Desktop\vsef\test\test\bin\Debug\EntityFramework.SqlServer.x
 C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.csprojResolveAssemblyReference.cache
 C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.Hotel.resources
 C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.MakeReservation.resources
-C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.Migrations.init.resources
-C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.Migrations.init2.resources
-C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.Migrations._3.resources
 C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.Properties.Resources.resources
 C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.csproj.GenerateResource.Cache
 C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.ListGuests.resources
 C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.ListRooms.resources
+C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.AddRoom.resources
+C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.Migrations.roomtypes.resources
+C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.Migrations.roomImage.resources

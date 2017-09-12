@@ -12,9 +12,13 @@ namespace test
 {
     public partial class ListRooms : Form
     {
+        private HotelContext context = new HotelContext();
+
         public ListRooms()
         {
             InitializeComponent();
+
+            dataGridView1.DataSource = context.Rooms.ToList();
         }
     }
 }

@@ -12,11 +12,17 @@ namespace test
 {
     public partial class MakeReservation : Form
     {
+        private HotelContext context = new HotelContext();
+
         public MakeReservation()
         {
             InitializeComponent();
 
 
+            comboBox1.DataSource = context.Rooms.ToList();
+            comboBox1.DisplayMember = "Capacity";
+            comboBox1.ValueMember = "Id";
+            
 
         }
 
@@ -27,12 +33,17 @@ namespace test
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show(comboBox1.SelectedValue.ToString());
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void MakeReservation_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

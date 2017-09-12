@@ -12,6 +12,8 @@ namespace test
 {
     public partial class Hotel : Form
     {
+        private HotelContext context = new HotelContext();
+
         public Hotel()
         {
             InitializeComponent();
@@ -19,12 +21,6 @@ namespace test
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            HotelContext context = new HotelContext();
-            Room r = new Room();
-            r.Capacity = 4;
-            r.Price = 400;
-            context.Rooms.Add(r);
-            context.SaveChanges();
 
         }
 
@@ -49,6 +45,12 @@ namespace test
         {
             ListRooms lr = new ListRooms();
             lr.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AddRoom ar = new AddRoom();
+            ar.Show();
         }
     }
 }

@@ -55,10 +55,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddRoom.Designer.cs">
+      <DependentUpon>AddRoom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Context\HotelContext.cs" />
     <Compile Include="Entities\Guest.cs" />
     <Compile Include="Entities\Reservation.cs" />
     <Compile Include="Entities\Room.cs" />
+    <Compile Include="Entities\RoomType.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,21 +90,20 @@
     <Compile Include="MakeReservation.Designer.cs">
       <DependentUpon>MakeReservation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709111523041_init.cs" />
-    <Compile Include="Migrations\201709111523041_init.Designer.cs">
-      <DependentUpon>201709111523041_init.cs</DependentUpon>
+    <Compile Include="Migrations\201709121314141_roomtypes.cs" />
+    <Compile Include="Migrations\201709121314141_roomtypes.Designer.cs">
+      <DependentUpon>201709121314141_roomtypes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709111524049_init2.cs" />
-    <Compile Include="Migrations\201709111524049_init2.Designer.cs">
-      <DependentUpon>201709111524049_init2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709111525156_3.cs" />
-    <Compile Include="Migrations\201709111525156_3.Designer.cs">
-      <DependentUpon>201709111525156_3.cs</DependentUpon>
+    <Compile Include="Migrations\201709121429361_roomImage.cs" />
+    <Compile Include="Migrations\201709121429361_roomImage.Designer.cs">
+      <DependentUpon>201709121429361_roomImage.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddRoom.resx">
+      <DependentUpon>AddRoom.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,14 +116,11 @@
     <EmbeddedResource Include="MakeReservation.resx">
       <DependentUpon>MakeReservation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709111523041_init.resx">
-      <DependentUpon>201709111523041_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709121314141_roomtypes.resx">
+      <DependentUpon>201709121314141_roomtypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709111524049_init2.resx">
-      <DependentUpon>201709111524049_init2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709111525156_3.resx">
-      <DependentUpon>201709111525156_3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709121429361_roomImage.resx">
+      <DependentUpon>201709121429361_roomImage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
