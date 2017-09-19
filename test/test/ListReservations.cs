@@ -13,20 +13,18 @@ using test.Entities;
 
 namespace test
 {
-    public partial class ListGuests : Form
+    public partial class ListReservations : Form
     {
-        IService<Guest> _guestService = new BLLFacade().GetGuestService;
+        IService<Reservation> service = new BLLFacade().GetReservationService;
 
-
-        public ListGuests()
+        public ListReservations()
         {
-
             InitializeComponent();
-            dataGridView1.DataSource = _guestService.GetAll();
 
+            dataGridView1.DataSource = service.GetAll();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void ListReservations_Load(object sender, EventArgs e)
         {
 
         }

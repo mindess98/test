@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +14,7 @@ namespace test
 {
     public partial class MakeReservation : Form
     {
-        private HotelContext context = new HotelContext();
+        /*private HotelContext context = new HotelContext();
 
         private BindingList<Room> rooms = new BindingList<Room>();
 
@@ -79,11 +81,11 @@ namespace test
                 textBox4.Text = capacityTotal.ToString();
             }
         }
-
+        */
         public MakeReservation()
         {
             InitializeComponent();
-
+            /*
             listBox2.DisplayMember = "Capacity";
             listBox2.DataSource = rooms;
 
@@ -92,9 +94,9 @@ namespace test
             dateTimePicker4.Value = dateTimePicker3.Value + new TimeSpan(1, 0, 0, 0);
 
             AddRoomsToTabs();
-
+            */
         }
-
+        /*
         private void CreateRoomTypeTabs()
         {
             foreach(RoomType rt in context.RoomTypes)
@@ -105,32 +107,42 @@ namespace test
 
         private void AddRoomsToTabs()
         {
-            foreach(TabPage tp in tabControl2.TabPages)
+            foreach (TabPage tp in tabControl2.TabPages)
             {
                 FlowLayoutPanel flp = new FlowLayoutPanel();
-
+                
                 flp.Dock = DockStyle.Fill;
 
-                foreach(Room ro in context.Rooms.Where(ro => ro.RoomType.Name == tp.Name))
+                foreach (Room ro in context.Rooms.Where(ro => ro.RoomType.Name == tp.Name))
                 {
-                    Button b = new Button();
-                    b.Size = new Size(100, 100);
-                    b.Text = ro.Name + "\n" + "Guests: " + ro.Capacity;
-                    b.TextAlign = ContentAlignment.BottomCenter;
-
-                    b.Tag = ro;
-                    b.Click += UpdateReservation;
-
-                    flp.Controls.Add(b);
+                    AddRoomButtonToFLP(ro, flp);
                 }
 
                 tp.Controls.Add(flp);
             }
         }
 
+        private Button AddRoomButtonToFLP(Room ro, FlowLayoutPanel flp)
+        {
+            Button b = new Button();
+            b.Size = new Size(100, 100);
+            b.Text = ro.Name + "\n" + "Guests: " + ro.Capacity;
+
+            /*
+            b.BackgroundImageLayout = ImageLayout.Stretch;
+            MemoryStream ms = new MemoryStream(ro.RoomImage);
+            b.BackgroundImage = Image.FromStream(ms);
+            
+            b.Tag = ro;
+            b.Click += UpdateReservation;
+
+            flp.Controls.Add(b);
+
+            return b;
+        }
+
         private void UpdateReservation(object sender, EventArgs e)
         {
-
             Button b = (Button)sender;
             Room r = (Room)b.Tag;
 
@@ -139,24 +151,25 @@ namespace test
             CapacityTotal += r.Capacity;
             listBox2.SelectedIndex = listBox2.Items.Count - 1;
 
+            b.Tag = null;
+            b.Dispose();
         }
 
         private void MakeReservation_Load(object sender, EventArgs e)
         {
 
         }
-        
+        */
         private void FormatListBoxItem2(object sender, ListControlConvertEventArgs e)
-        {
-            string roomType = ((Room)e.ListItem).RoomType.Name;
-            string roomPrice = string.Format("{0:c2}", ((Room)e.ListItem).Price);
+        {/*
+            string roomType = ((Room)e.ListItem).Name;
+            string roomPrice = ((Room)e.ListItem).Price.ToString();
             ListBox lb = (ListBox)sender;
-
-            string padding = new string(' ', 45 - roomType.Length - roomPrice.Length);
-
-            e.Value = string.Format("{0}{2}{1}/Night", roomType, roomPrice, padding);
             
 
+            e.Value = string.Format("{0,-30}{1,10:c}/Night", roomType, roomPrice);
+            
+                */
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -166,7 +179,9 @@ namespace test
 
         private void button6_Click(object sender, EventArgs e)
         {
+            /*
             if (rooms.Count == 0) return;
+            
             Room r = (Room)listBox2.SelectedItem;
             int i = rooms.IndexOf(r);
             PriceTotal -= r.Price * DaysDifference;
@@ -176,6 +191,73 @@ namespace test
             if (i < 0) i = 0;
             if(rooms.Count > 0)
                 listBox2.SelectedIndex = i;
+
+            foreach(TabPage tp in tabControl2.TabPages)
+            {
+                if(tp.Name == r.RoomType.Name)
+                {
+                    foreach(FlowLayoutPanel flp in tp.Controls)
+                    {
+                        AddRoomButtonToFLP(r, flp);
+
+                        tp.Controls.Add(flp);
+                        return;
+                    }
+                }
+            }
+        }
+
+        private void PrintReceipt()
+        {
+            PrintDialog printDialog = new PrintDialog();
+
+            PrintDocument printDocument = new PrintDocument();
+
+            printDialog.Document = printDocument;
+
+            printDocument.PrintPage += PrintDocument_PrintPage;
+
+            DialogResult result = printDialog.ShowDialog();
+
+            if(result == DialogResult.OK)
+            {
+                printDocument.Print();
+            }
+            */
+        }
+
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            /*
+            Graphics graphic = e.Graphics;
+
+            Font font = new Font("Courier New", 12);
+
+            float fontHeight = font.GetHeight();
+
+            int startX = 10;
+            int startY = 10;
+            int offset = 40;
+
+            graphic.DrawString("Welcome to the Hotel", new Font("Courier New", 18), new SolidBrush(Color.Black), startX, startY);
+
+            foreach(Room room in rooms)
+            {
+                string roomName = room.Name.PadRight(30);
+                string roomTotal = string.Format("{0:c}", room.Price);
+                string roomLine = roomName + roomTotal;
+
+                graphic.DrawString(roomLine, font, new SolidBrush(Color.Black), startX, startY + offset);
+
+                offset += (int)fontHeight + 5;
+            }
+
+            offset += 20;
+
+            graphic.DrawString("Total to pay".PadRight(30) + string.Format("{0:c}", priceTotal), font, new SolidBrush(Color.Black), startX, startY + offset);
+
+        */
+
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -185,12 +267,15 @@ namespace test
 
         private void dateTimePicker4_ValueChanged(object sender, EventArgs e)
         {
+            /*
             DaysDifference = (dateTimePicker4.Value - dateTimePicker3.Value).Days;
+                    */
             
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            /*
             Reservation re = new Reservation();
             re.From = dateTimePicker3.Value;
             re.To = dateTimePicker4.Value;
@@ -205,16 +290,13 @@ namespace test
             context.Guests.Add(g);
             context.Reservations.Add(re);
             context.SaveChanges();
-
+            */
         }
 
         private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
         {
-            if(dateTimePicker4.Value < dateTimePicker3.Value)
-            {
-                dateTimePicker3.Value = dateTimePicker4.Value - new TimeSpan(1, 0, 0, 0);
-            }
-            DaysDifference = 1;
+           // DaysDifference = (dateTimePicker4.Value - dateTimePicker3.Value).Days;
+            
         }
     }
 }

@@ -31,4 +31,10 @@ C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.csproj.GenerateResourc
 C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.ListGuests.resources
 C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.ListRooms.resources
 C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.AddRoom.resources
-C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.Migrations.guestreservation_fix.resources
+C:\Users\PCHARDWARE\Desktop\vsef\test\test\obj\Debug\test.ListReservations.resources
+C:\Users\PCHARDWARE\Desktop\vsef\test\test\bin\Debug\BLL.dll
+C:\Users\PCHARDWARE\Desktop\vsef\test\test\bin\Debug\Entities.dll
+C:\Users\PCHARDWARE\Desktop\vsef\test\test\bin\Debug\DAL.dll
+C:\Users\PCHARDWARE\Desktop\vsef\test\test\bin\Debug\BLL.pdb
+C:\Users\PCHARDWARE\Desktop\vsef\test\test\bin\Debug\Entities.pdb
+C:\Users\PCHARDWARE\Desktop\vsef\test\test\bin\Debug\DAL.pdb

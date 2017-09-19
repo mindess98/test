@@ -1,5 +1,6 @@
 namespace test.Migrations
 {
+    using Entities;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;

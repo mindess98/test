@@ -12,11 +12,18 @@ namespace test
 {
     public partial class Hotel : Form
     {
-        private HotelContext context = new HotelContext();
 
         public Hotel()
         {
             InitializeComponent();
+
+            button1.Hide();
+            button2.Hide();
+            button3.Hide();
+            button4.Hide();
+            button5.Hide();
+            button9.Hide();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -38,7 +45,17 @@ namespace test
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Close();
+
+            button1.Hide();
+            button2.Hide();
+            button3.Hide();
+            button4.Hide();
+            button5.Hide();
+            button9.Hide();
+
+            button6.Show();
+            button7.Show();
+            button8.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -51,6 +68,42 @@ namespace test
         {
             AddRoom ar = new AddRoom();
             ar.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            button6.Hide();
+            button7.Hide();
+            button8.Hide();
+            button9.Hide();
+
+            button1.Show();
+            button4.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            button6.Hide();
+            button7.Hide();
+            button8.Hide();
+
+            button1.Show();
+            button2.Show();
+            button3.Show();
+            button4.Show();
+            button5.Show();
+            button9.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            ListReservations lr = new ListReservations();
+            lr.Show();
         }
     }
 }

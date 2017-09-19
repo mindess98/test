@@ -1,4 +1,4 @@
-﻿namespace test
+﻿namespace test.Entities
 {
     public class Guest
     {

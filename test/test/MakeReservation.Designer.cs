@@ -50,7 +50,7 @@ namespace test
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(277, 402);
+            this.listBox2.Location = new System.Drawing.Point(277, 74);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(222, 108);
             this.listBox2.TabIndex = 0;
@@ -58,7 +58,7 @@ namespace test
             // 
             // tabControl2
             // 
-            this.tabControl2.Location = new System.Drawing.Point(38, 74);
+            this.tabControl2.Location = new System.Drawing.Point(38, 242);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(461, 322);
@@ -68,15 +68,15 @@ namespace test
             // 
             this.textBox2.Location = new System.Drawing.Point(145, 32);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(218, 20);
+            this.textBox2.Size = new System.Drawing.Size(354, 20);
             this.textBox2.TabIndex = 0;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(38, 541);
+            this.button4.Location = new System.Drawing.Point(38, 583);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 49);
+            this.button4.Size = new System.Drawing.Size(149, 49);
             this.button4.TabIndex = 1;
             this.button4.Text = "Commit Reservation";
             this.button4.UseVisualStyleBackColor = true;
@@ -84,9 +84,9 @@ namespace test
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(163, 541);
+            this.button5.Location = new System.Drawing.Point(374, 583);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 49);
+            this.button5.Size = new System.Drawing.Size(125, 49);
             this.button5.TabIndex = 2;
             this.button5.Text = "Cancel";
             this.button5.UseVisualStyleBackColor = true;
@@ -103,7 +103,7 @@ namespace test
             // 
             // dateTimePicker3
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(38, 434);
+            this.dateTimePicker3.Location = new System.Drawing.Point(38, 90);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker3.TabIndex = 5;
@@ -111,7 +111,7 @@ namespace test
             // 
             // dateTimePicker4
             // 
-            this.dateTimePicker4.Location = new System.Drawing.Point(38, 482);
+            this.dateTimePicker4.Location = new System.Drawing.Point(38, 138);
             this.dateTimePicker4.Name = "dateTimePicker4";
             this.dateTimePicker4.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker4.TabIndex = 6;
@@ -120,7 +120,7 @@ namespace test
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(35, 418);
+            this.label5.Location = new System.Drawing.Point(35, 74);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 7;
@@ -129,7 +129,7 @@ namespace test
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(35, 466);
+            this.label6.Location = new System.Drawing.Point(35, 122);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(20, 13);
             this.label6.TabIndex = 8;
@@ -137,17 +137,17 @@ namespace test
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(277, 567);
+            this.button6.Location = new System.Drawing.Point(277, 203);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(222, 23);
             this.button6.TabIndex = 9;
-            this.button6.Text = "Delete";
+            this.button6.Text = "Remove Entry";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(277, 541);
+            this.textBox3.Location = new System.Drawing.Point(38, 203);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(86, 20);
             this.textBox3.TabIndex = 10;
@@ -155,7 +155,7 @@ namespace test
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(413, 541);
+            this.textBox4.Location = new System.Drawing.Point(145, 203);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(86, 20);
             this.textBox4.TabIndex = 11;
@@ -163,7 +163,7 @@ namespace test
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(410, 525);
+            this.label7.Location = new System.Drawing.Point(142, 187);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 13);
             this.label7.TabIndex = 12;
@@ -172,7 +172,7 @@ namespace test
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(274, 525);
+            this.label8.Location = new System.Drawing.Point(35, 187);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 13);
             this.label8.TabIndex = 13;
@@ -180,7 +180,7 @@ namespace test
             // 
             // MakeReservation
             // 
-            this.ClientSize = new System.Drawing.Size(526, 623);
+            this.ClientSize = new System.Drawing.Size(526, 653);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox4);

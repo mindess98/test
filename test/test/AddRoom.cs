@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL;
+using BLL.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,12 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using test.Entities;
 
 namespace test
 {
     public partial class AddRoom : Form
     {
-        private HotelContext context = new HotelContext();
+        IService<Room> roomService = new BLLFacade().GetRoomService;
+        IService<RoomType> roomTypeService = new BLLFacade().GetRoomTypeService;
 
         private byte[] imageBytes;
 
@@ -23,7 +27,7 @@ namespace test
 
             comboBox1.DisplayMember = "Name";
             comboBox1.ValueMember = "Id";
-            comboBox1.DataSource = context.RoomTypes.ToList();
+            comboBox1.DataSource = roomTypeService.GetAll();
 
 
 
@@ -73,8 +77,7 @@ namespace test
         private void button1_Click(object sender, EventArgs e)
         {
             Room r = new Room { Capacity = int.Parse(textBox2.Text), RoomTypeId = (int)comboBox1.SelectedValue, Price = decimal.Parse(textBox1.Text), RoomImage = imageBytes, Name = textBox3.Text };
-            context.Rooms.Add(r);
-            context.SaveChanges();
+            roomService.Create(r);
 
             MessageBox.Show("Added room successfully");
 

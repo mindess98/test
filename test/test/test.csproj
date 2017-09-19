@@ -61,11 +61,6 @@
     <Compile Include="AddRoom.Designer.cs">
       <DependentUpon>AddRoom.cs</DependentUpon>
     </Compile>
-    <Compile Include="Context\HotelContext.cs" />
-    <Compile Include="Entities\Guest.cs" />
-    <Compile Include="Entities\Reservation.cs" />
-    <Compile Include="Entities\Room.cs" />
-    <Compile Include="Entities\RoomType.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +72,12 @@
     </Compile>
     <Compile Include="ListGuests.Designer.cs">
       <DependentUpon>ListGuests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListReservations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListReservations.Designer.cs">
+      <DependentUpon>ListReservations.cs</DependentUpon>
     </Compile>
     <Compile Include="ListRooms.cs">
       <SubType>Form</SubType>
@@ -90,11 +91,6 @@
     <Compile Include="MakeReservation.Designer.cs">
       <DependentUpon>MakeReservation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709121817542_guest-reservation_fix.cs" />
-    <Compile Include="Migrations\201709121817542_guest-reservation_fix.Designer.cs">
-      <DependentUpon>201709121817542_guest-reservation_fix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddRoom.resx">
@@ -106,14 +102,14 @@
     <EmbeddedResource Include="ListGuests.resx">
       <DependentUpon>ListGuests.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListReservations.resx">
+      <DependentUpon>ListReservations.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ListRooms.resx">
       <DependentUpon>ListRooms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MakeReservation.resx">
       <DependentUpon>MakeReservation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709121817542_guest-reservation_fix.resx">
-      <DependentUpon>201709121817542_guest-reservation_fix.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -137,6 +133,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{649e194b-851e-47e9-9b5f-a94f489f176e}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{85ee184c-1f68-45b6-b16c-08730dab63e3}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

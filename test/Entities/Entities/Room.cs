@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace test
+﻿namespace test.Entities
 {
     public class Room
     {
