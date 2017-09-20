@@ -39,12 +39,12 @@ namespace DAL.Repositories
 
         public IEnumerable<Guest> GetAll()
         {
-            return _context.Guests.ToList();
+            return _context.Guests.Include("Reservation").ToList();
         }
 
         public Guest GetById(int Id)
         {
-            Guest g = _context.Guests.FirstOrDefault(x => x.Id == Id);
+            Guest g = GetAll().FirstOrDefault(x => x.Id == Id);
             if (g != null)
             {
                 return new Guest { Name = g.Name, Reservation = g.Reservation , Id = g.Id };

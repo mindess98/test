@@ -40,12 +40,12 @@ namespace DAL.Repositories
 
         public IEnumerable<Reservation> GetAll()
         {
-            return _context.Reservations.ToList();
+            return _context.Reservations.Include("Guest").Include("Rooms").ToList();
         }
 
         public Reservation GetById(int Id)
         {
-            Reservation g = _context.Reservations.FirstOrDefault(x => x.Id == Id);
+            Reservation g = GetAll().FirstOrDefault(x => x.Id == Id);
             if (g != null)
             {
                 return new Reservation { Rooms = g.Rooms, From = g.From, To = g.To, Guest = g.Guest, Id = g.Id };

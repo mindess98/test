@@ -11,19 +11,13 @@ namespace BLL
 {
     public class BLLFacade
     {
-        private DALFacade _dalFacade;
+        
+        public IService<Guest> GetGuestService { get { return new GuestService(new DALFacade()); }  }
 
-        public BLLFacade()
-        {
-            _dalFacade = new DALFacade();
-        }
+        public IService<Reservation> GetReservationService { get { return new ReservationService(new DALFacade()); } }
 
-        public IService<Guest> GetGuestService { get { return new GuestService(_dalFacade); }  }
+        public IService<RoomType> GetRoomTypeService { get { return new RoomTypeService(new DALFacade()); } }
 
-        public IService<Reservation> GetReservationService { get { return new ReservationService(_dalFacade); } }
-
-        public IService<RoomType> GetRoomTypeService { get { return new RoomTypeService(_dalFacade); } }
-
-        public IService<Room> GetRoomService { get { return new RoomService(_dalFacade); } }
+        public IService<Room> GetRoomService { get { return new RoomService(new DALFacade()); } }
     }
 }

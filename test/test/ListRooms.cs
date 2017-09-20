@@ -32,7 +32,7 @@ namespace test
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = roomService.GetAll();//.Where(x => x.RoomTypeId == 1);
+            dataGridView1.DataSource = roomService.GetAll().Where(x => x.RoomTypeId == (int)comboBox1.SelectedValue).ToList();
         }
     }
 }

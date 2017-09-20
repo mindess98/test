@@ -40,12 +40,12 @@ namespace DAL.Repositories
 
         public IEnumerable<RoomType> GetAll()
         {
-            return _context.RoomTypes.ToList();
+            return _context.RoomTypes.Include("Rooms").ToList();
         }
 
         public RoomType GetById(int Id)
         {
-            RoomType g = _context.RoomTypes.FirstOrDefault(x => x.Id == Id);
+            RoomType g = GetAll().FirstOrDefault(x => x.Id == Id);
             if (g != null)
             {
                 return new RoomType { Name = g.Name, StarValue = g.StarValue, Id = g.Id };

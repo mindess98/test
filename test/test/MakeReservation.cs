@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL;
+using BLL.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,12 +11,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using test.Entities;
 
 namespace test
 {
     public partial class MakeReservation : Form
     {
-        /*private HotelContext context = new HotelContext();
+        IService<Room> roomService = new BLLFacade().GetRoomService;
+        IService<Guest> guestService = new BLLFacade().GetGuestService;
+        IService<Reservation> reservationService = new BLLFacade().GetReservationService;
+        IService<RoomType> roomTypeService = new BLLFacade().GetRoomTypeService;
 
         private BindingList<Room> rooms = new BindingList<Room>();
 
@@ -81,11 +87,11 @@ namespace test
                 textBox4.Text = capacityTotal.ToString();
             }
         }
-        */
+
         public MakeReservation()
         {
             InitializeComponent();
-            /*
+
             listBox2.DisplayMember = "Capacity";
             listBox2.DataSource = rooms;
 
@@ -94,12 +100,13 @@ namespace test
             dateTimePicker4.Value = dateTimePicker3.Value + new TimeSpan(1, 0, 0, 0);
 
             AddRoomsToTabs();
-            */
+
         }
-        /*
+
         private void CreateRoomTypeTabs()
         {
-            foreach(RoomType rt in context.RoomTypes)
+            var roomTypes = roomTypeService.GetAll();
+            foreach (RoomType rt in roomTypes)
             {
                 tabControl2.TabPages.Add(rt.Name, new string('\x2605', rt.StarValue) + " " + rt.Name );
             }
@@ -113,7 +120,8 @@ namespace test
                 
                 flp.Dock = DockStyle.Fill;
 
-                foreach (Room ro in context.Rooms.Where(ro => ro.RoomType.Name == tp.Name))
+                var rooms = roomService.GetAll().Where(ro => ro.RoomType.Name == tp.Name);
+                foreach (Room ro in rooms)
                 {
                     AddRoomButtonToFLP(ro, flp);
                 }
@@ -132,7 +140,7 @@ namespace test
             b.BackgroundImageLayout = ImageLayout.Stretch;
             MemoryStream ms = new MemoryStream(ro.RoomImage);
             b.BackgroundImage = Image.FromStream(ms);
-            
+            */
             b.Tag = ro;
             b.Click += UpdateReservation;
 
@@ -159,9 +167,9 @@ namespace test
         {
 
         }
-        */
+        
         private void FormatListBoxItem2(object sender, ListControlConvertEventArgs e)
-        {/*
+        {
             string roomType = ((Room)e.ListItem).Name;
             string roomPrice = ((Room)e.ListItem).Price.ToString();
             ListBox lb = (ListBox)sender;
@@ -169,7 +177,7 @@ namespace test
 
             e.Value = string.Format("{0,-30}{1,10:c}/Night", roomType, roomPrice);
             
-                */
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -179,7 +187,6 @@ namespace test
 
         private void button6_Click(object sender, EventArgs e)
         {
-            /*
             if (rooms.Count == 0) return;
             
             Room r = (Room)listBox2.SelectedItem;
@@ -223,12 +230,10 @@ namespace test
             {
                 printDocument.Print();
             }
-            */
         }
 
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
-            /*
             Graphics graphic = e.Graphics;
 
             Font font = new Font("Courier New", 12);
@@ -256,7 +261,7 @@ namespace test
 
             graphic.DrawString("Total to pay".PadRight(30) + string.Format("{0:c}", priceTotal), font, new SolidBrush(Color.Black), startX, startY + offset);
 
-        */
+
 
         }
 
@@ -267,15 +272,13 @@ namespace test
 
         private void dateTimePicker4_ValueChanged(object sender, EventArgs e)
         {
-            /*
             DaysDifference = (dateTimePicker4.Value - dateTimePicker3.Value).Days;
-                    */
+
             
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            /*
             Reservation re = new Reservation();
             re.From = dateTimePicker3.Value;
             re.To = dateTimePicker4.Value;
@@ -287,15 +290,14 @@ namespace test
 
             re.Guest = g;
 
-            context.Guests.Add(g);
-            context.Reservations.Add(re);
-            context.SaveChanges();
-            */
+            guestService.Create(g);
+            reservationService.Create(re);
+
         }
 
         private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
         {
-           // DaysDifference = (dateTimePicker4.Value - dateTimePicker3.Value).Days;
+            DaysDifference = (dateTimePicker4.Value - dateTimePicker3.Value).Days;
             
         }
     }
