@@ -283,6 +283,8 @@ namespace test
             re.From = dateTimePicker3.Value;
             re.To = dateTimePicker4.Value;
             re.Rooms = rooms.ToList();
+            foreach (Room room in re.Rooms)
+                room.Reservation = null;
 
             Guest g = new Guest();
             g.Name = textBox2.Text;
@@ -291,8 +293,6 @@ namespace test
             re.Guest = g;
 
             guestService.Create(g);
-            reservationService.Create(re);
-
         }
 
         private void dateTimePicker3_ValueChanged(object sender, EventArgs e)

@@ -1,4 +1,6 @@
-﻿namespace test.Entities
+﻿using System.Collections.Generic;
+
+namespace test.Entities
 {
     public class Room
     {
