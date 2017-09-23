@@ -56,7 +56,14 @@ namespace DAL.Repositories
 
         public Room Update(Room t)
         {
-
+            Room ro = GetById(t.Id);
+            t.Name = ro.Name;
+            t.Price = ro.Price;
+            t.Reservation = ro.Reservation;
+            t.ReservationId = ro.ReservationId;
+            t.RoomType = ro.RoomType;
+            t.RoomImage = ro.RoomImage;
+            t.RoomTypeId = ro.RoomTypeId;
             return t;
         }
     }

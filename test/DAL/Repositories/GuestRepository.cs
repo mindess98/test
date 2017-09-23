@@ -55,7 +55,9 @@ namespace DAL.Repositories
 
         public Guest Update(Guest t)
         {
-
+            Guest gu = GetById(t.Id);
+            gu.Name = t.Name;
+            gu.Reservation = t.Reservation;
             return t;
         }
     }

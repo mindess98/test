@@ -54,7 +54,12 @@ namespace BLL.Services
 
         public RoomType Update(RoomType t)
         {
-            throw new NotImplementedException();
+            using (var uow = _facade.GetRoomTypeUoW)
+            {
+                RoomType rt = uow.Repository.Update(t);
+                uow.Complete();
+                return rt;
+            }
         }
     }
 }

@@ -63,7 +63,12 @@ namespace BLL.Services
 
         public Reservation Update(Reservation t)
         {
-            throw new NotImplementedException();
+            using (var uow = _facade.GetReservationUoW)
+            {
+                Reservation re = uow.Repository.Update(t);
+                uow.Complete();
+                return re;
+            }
         }
     }
 }

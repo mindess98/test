@@ -61,6 +61,12 @@ namespace DAL.Repositories
 
         public Reservation Update(Reservation t)
         {
+            Reservation re = GetById(t.Id);
+            re.Guest = t.Guest;
+            re.GuestId = t.GuestId;
+            re.Rooms = t.Rooms;
+            re.From = t.From;
+            re.To = t.To;
 
             return t;
         }

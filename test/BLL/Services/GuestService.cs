@@ -54,7 +54,12 @@ namespace BLL.Services
 
         public Guest Update(Guest t)
         {
-            throw new NotImplementedException();
+            using (var uow = _facade.GetGuestUoW)
+            {
+                Guest gu = uow.Repository.Update(t);
+                uow.Complete();
+                return gu;
+            }
         }
     }
 }

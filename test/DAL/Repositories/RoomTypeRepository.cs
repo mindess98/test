@@ -56,7 +56,10 @@ namespace DAL.Repositories
 
         public RoomType Update(RoomType t)
         {
-
+            RoomType rt = GetById(t.Id);
+            rt.Name = t.Name;
+            rt.Rooms = t.Rooms;
+            rt.StarValue = t.StarValue;
             return t;
         }
     }
