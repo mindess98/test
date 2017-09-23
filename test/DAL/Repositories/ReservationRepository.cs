@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,12 @@ namespace DAL.Repositories
 
         public Reservation Create(Reservation t)
         {
-            _context.Reservations.Add(t);
-            return t;
+            if(_context.Guests.Any(x => x.Id == t.Guest.Id))
+            {
+                _context.Guests.Attach(t.Guest);
+            }
+
+            return _context.Reservations.Add(t);
         }
 
         public bool Delete(int Id)

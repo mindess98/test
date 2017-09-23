@@ -16,9 +16,18 @@ namespace BLL.Services
         {
             using (var uow = _facade.GetReservationUoW)
             {
-                var newReservation = uow.Repository.Create(t);
-                uow.Complete();
-                return newReservation;
+                using (var uowG = _facade.GetGuestUoW)
+                {
+                    Guest g = uowG.Repository.GetById(t.Guest.Id);
+                    if(g == null)
+                    {
+                        uowG.Repository.Create(t.Guest);
+                    }
+
+                    var newReservation = uow.Repository.Create(t);
+                    uow.Complete();
+                    return newReservation;
+                }
             }
         }
 

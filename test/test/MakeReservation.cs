@@ -120,7 +120,7 @@ namespace test
                 
                 flp.Dock = DockStyle.Fill;
 
-                var rooms = roomService.GetAll().Where(ro => ro.RoomType.Name == tp.Name);
+                var rooms = roomService.GetAll().Where(ro => ro.RoomType.Name == tp.Name).ToList();
                 foreach (Room ro in rooms)
                 {
                     AddRoomButtonToFLP(ro, flp);
@@ -283,16 +283,14 @@ namespace test
             re.From = dateTimePicker3.Value;
             re.To = dateTimePicker4.Value;
             re.Rooms = rooms.ToList();
-            foreach (Room room in re.Rooms)
-                room.Reservation = null;
 
             Guest g = new Guest();
             g.Name = textBox2.Text;
             g.Reservation = re;
 
             re.Guest = g;
-
-            guestService.Create(g);
+            
+            reservationService.Create(re);
         }
 
         private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
