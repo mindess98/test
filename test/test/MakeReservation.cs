@@ -120,7 +120,7 @@ namespace test
                 
                 flp.Dock = DockStyle.Fill;
 
-                var rooms = roomService.GetAll().Where(ro => ro.RoomType.Name == tp.Name).ToList();
+                var rooms = roomService.GetAll().Where(ro => ro.Type.Name == tp.Name).ToList();
                 foreach (Room ro in rooms)
                 {
                     AddRoomButtonToFLP(ro, flp);
@@ -201,7 +201,7 @@ namespace test
 
             foreach(TabPage tp in tabControl2.TabPages)
             {
-                if(tp.Name == r.RoomType.Name)
+                if(tp.Name == r.Type.Name)
                 {
                     foreach(FlowLayoutPanel flp in tp.Controls)
                     {

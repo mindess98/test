@@ -1,6 +1,5 @@
-namespace test.Migrations
+namespace DAL.Migrations
 {
-    using Entities;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -27,12 +26,6 @@ namespace test.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
-            RoomType rt1 = new RoomType { Name = "Deluxe", StarValue = 5 };
-            RoomType rt2 = new RoomType { Name = "Elegant", StarValue = 4 };
-            RoomType rt3 = new RoomType { Name = "Economy", StarValue = 3 };
-
-            context.RoomTypes.AddOrUpdate(x => x.Name, rt1, rt2, rt3);
         }
     }
 }

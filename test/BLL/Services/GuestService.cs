@@ -32,7 +32,7 @@ namespace BLL.Services
             }
         }
 
-        public IEnumerable<Guest> GetAll()
+        public ICollection<Guest> GetAll()
         {
             using (var uow = _facade.GetGuestUoW)
             {

@@ -19,15 +19,17 @@ namespace DAL.Repositories
 
         public Room Create(Room t)
         {
+            _context.RoomTypes.Attach(t.Type);
             _context.Rooms.Add(t);
             return t;
         }
 
         public bool Delete(int Id)
         {
-            Room g = GetById(Id);
+            Room g = _context.Rooms.AsNoTracking().FirstOrDefault(x => x.Id == Id);
             if (g != null)
             {
+                _context.Rooms.Attach(g);
                 _context.Rooms.Remove(g);
                 return true;
             }
@@ -38,17 +40,17 @@ namespace DAL.Repositories
 
         }
 
-        public IEnumerable<Room> GetAll()
+        public ICollection<Room> GetAll()
         {
-            return _context.Rooms.Include("RoomType").Include("Reservation").ToList();
+            return _context.Rooms.Include("Reservations").Include("Type").ToList();
         }
 
         public Room GetById(int Id)
         {
-            Room g = GetAll().FirstOrDefault(x => x.Id == Id);
+            Room g = _context.Rooms.Include("Reservations").Include("Type").FirstOrDefault(x => x.Id == Id);
             if (g != null)
             {
-                return new Room { Name = g.Name, Capacity = g.Capacity,  Price = g.Price, Reservation= g.Reservation, Id = g.Id, RoomImage = g.RoomImage, RoomType = g.RoomType };
+                return new Room { Name = g.Name, Capacity = g.Capacity,  Price = g.Price, Reservations = g.Reservations, Id = g.Id, Image = g.Image, Type = g.Type };
             }
             else
                 return null;
@@ -56,14 +58,13 @@ namespace DAL.Repositories
 
         public Room Update(Room t)
         {
-            Room ro = GetById(t.Id);
-            t.Name = ro.Name;
-            t.Price = ro.Price;
-            t.Reservation = ro.Reservation;
-            t.ReservationId = ro.ReservationId;
-            t.RoomType = ro.RoomType;
-            t.RoomImage = ro.RoomImage;
-            t.RoomTypeId = ro.RoomTypeId;
+            Room ro = _context.Rooms.FirstOrDefault(x => x.Id == t.Id);
+            ro.Name = t.Name;
+            ro.Price = t.Price;
+            ro.Reservations = t.Reservations;
+            ro.Type = t.Type;
+            ro.Image = t.Image;
+            ro.RoomTypeId = t.RoomTypeId;
             return t;
         }
     }

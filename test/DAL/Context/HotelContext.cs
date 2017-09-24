@@ -10,6 +10,12 @@ namespace test
 {
     public class HotelContext : DbContext
     {
+        public HotelContext() : base()
+        {
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
+        }
+
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Guest> Guests { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
@@ -23,11 +29,11 @@ namespace test
                         
 
             modelBuilder.Entity<Room>()
-                        .HasOptional(ro => ro.Reservation)
+                        .HasMany(ro => ro.Reservations)
                         .WithMany(re => re.Rooms);
 
             modelBuilder.Entity<Room>()
-                        .HasRequired(ro => ro.RoomType)
+                        .HasRequired(ro => ro.Type)
                         .WithMany(rt => rt.Rooms)
                         .HasForeignKey(ro => ro.RoomTypeId);
                         

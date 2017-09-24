@@ -32,12 +32,11 @@ namespace BLL.Services
             }
         }
 
-        public IEnumerable<RoomType> GetAll()
+        public ICollection<RoomType> GetAll()
         {
             using (var uow = _facade.GetRoomTypeUoW)
             {
                 var roomTypes = uow.Repository.GetAll();
-                uow.Complete();
                 return roomTypes;
             }
         }
@@ -47,7 +46,6 @@ namespace BLL.Services
             using (var uow = _facade.GetRoomTypeUoW)
             {
                 var roomType = uow.Repository.GetById(Id);
-                uow.Complete();
                 return roomType;
             }
         }

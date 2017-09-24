@@ -8,7 +8,7 @@ namespace BLL.Services
 
         T Update(T t);
 
-        IEnumerable<T> GetAll();
+        ICollection<T> GetAll();
         T GetById(int Id);
 
         bool Delete(int Id);

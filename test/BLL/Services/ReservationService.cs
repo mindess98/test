@@ -41,7 +41,7 @@ namespace BLL.Services
             }
         }
 
-        public IEnumerable<Reservation> GetAll()
+        public ICollection<Reservation> GetAll()
         {
             using (var uow = _facade.GetReservationUoW)
             {

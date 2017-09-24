@@ -25,9 +25,10 @@ namespace DAL.Repositories
 
         public bool Delete(int Id)
         {
-            RoomType g = GetById(Id);
+            RoomType g = _context.RoomTypes.AsNoTracking().FirstOrDefault(x => x.Id == Id);
             if (g != null)
             {
+                _context.RoomTypes.Attach(g);
                 _context.RoomTypes.Remove(g);
                 return true;
             }
@@ -38,14 +39,14 @@ namespace DAL.Repositories
 
         }
 
-        public IEnumerable<RoomType> GetAll()
+        public ICollection<RoomType> GetAll()
         {
             return _context.RoomTypes.Include("Rooms").ToList();
         }
 
         public RoomType GetById(int Id)
         {
-            RoomType g = GetAll().FirstOrDefault(x => x.Id == Id);
+            RoomType g = _context.RoomTypes.Include("Rooms").FirstOrDefault(x => x.Id == Id);
             if (g != null)
             {
                 return new RoomType { Name = g.Name, StarValue = g.StarValue, Id = g.Id };
@@ -56,11 +57,11 @@ namespace DAL.Repositories
 
         public RoomType Update(RoomType t)
         {
-            RoomType rt = GetById(t.Id);
+            RoomType rt = _context.RoomTypes.FirstOrDefault(x => x.Id == t.Id);
             rt.Name = t.Name;
             rt.Rooms = t.Rooms;
             rt.StarValue = t.StarValue;
-            return t;
+            return rt;
         }
     }
 }

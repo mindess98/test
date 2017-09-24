@@ -76,7 +76,7 @@ namespace test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Room r = new Room { Capacity = int.Parse(textBox2.Text), RoomTypeId = (int)comboBox1.SelectedValue, Price = decimal.Parse(textBox1.Text), RoomImage = imageBytes, Name = textBox3.Text };
+            Room r = new Room { Capacity = int.Parse(textBox2.Text), RoomTypeId = (int)comboBox1.SelectedValue, Price = decimal.Parse(textBox1.Text), Image = imageBytes, Name = textBox3.Text };
             roomService.Create(r);
 
             MessageBox.Show("Added room successfully");

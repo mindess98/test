@@ -26,8 +26,9 @@ namespace DAL.Repositories
 
         public bool Delete(int Id)
         {
-            Guest g = GetById(Id);
+            Guest g = _context.Guests.AsNoTracking().FirstOrDefault(x => x.Id == Id);
             if ( g != null){
+                _context.Guests.Attach(g);
                 _context.Guests.Remove(g);
                 return true;
             }
@@ -37,14 +38,14 @@ namespace DAL.Repositories
             
         }
 
-        public IEnumerable<Guest> GetAll()
+        public ICollection<Guest> GetAll()
         {
-            return _context.Guests.Include("Reservation").ToList();
+            return _context.Guests.Include("Reservation").ToList();  
         }
 
         public Guest GetById(int Id)
         {
-            Guest g = GetAll().FirstOrDefault(x => x.Id == Id);
+            Guest g = _context.Guests.Include("Reservation").FirstOrDefault(x => x.Id == Id);
             if (g != null)
             {
                 return new Guest { Name = g.Name, Reservation = g.Reservation , Id = g.Id };
@@ -55,7 +56,7 @@ namespace DAL.Repositories
 
         public Guest Update(Guest t)
         {
-            Guest gu = GetById(t.Id);
+            Guest gu = _context.Guests.FirstOrDefault(x => x.Id == t.Id);
             gu.Name = t.Name;
             gu.Reservation = t.Reservation;
             return t;

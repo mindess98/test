@@ -20,9 +20,11 @@ namespace DAL.Repositories
 
         public Reservation Create(Reservation t)
         {
-            if(_context.Guests.Any(x => x.Id == t.Guest.Id))
+            _context.Guests.Attach(t.Guest);
+            foreach (Room room in t.Rooms)
             {
-                _context.Guests.Attach(t.Guest);
+                _context.Rooms.Attach(room);
+                _context.RoomTypes.Attach(room.Type);
             }
 
             return _context.Reservations.Add(t);
@@ -30,9 +32,10 @@ namespace DAL.Repositories
 
         public bool Delete(int Id)
         {
-            Reservation g = GetById(Id);
+            Reservation g = _context.Reservations.AsNoTracking().FirstOrDefault(x => x.Id == Id);
             if (g != null)
             {
+                _context.Reservations.Attach(g);
                 _context.Reservations.Remove(g);
                 return true;
             }
@@ -43,14 +46,14 @@ namespace DAL.Repositories
 
         }
 
-        public IEnumerable<Reservation> GetAll()
+        public ICollection<Reservation> GetAll()
         {
-            return _context.Reservations.Include("Guest").Include("Rooms").ToList();
+            return _context.Reservations.Include("Rooms").Include("Guest").ToList();
         }
 
         public Reservation GetById(int Id)
         {
-            Reservation g = GetAll().FirstOrDefault(x => x.Id == Id);
+            Reservation g = _context.Reservations.Include("Rooms").Include("Guest").FirstOrDefault(x => x.Id == Id);
             if (g != null)
             {
                 return new Reservation { Rooms = g.Rooms, From = g.From, To = g.To, Guest = g.Guest, Id = g.Id };
@@ -61,7 +64,7 @@ namespace DAL.Repositories
 
         public Reservation Update(Reservation t)
         {
-            Reservation re = GetById(t.Id);
+            Reservation re = _context.Reservations.FirstOrDefault(x => x.Id == t.Id);
             re.Guest = t.Guest;
             re.GuestId = t.GuestId;
             re.Rooms = t.Rooms;
