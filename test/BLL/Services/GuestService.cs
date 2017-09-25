@@ -14,9 +14,9 @@ namespace BLL.Services
         }
         public Guest Create(Guest t)
         {
-            using (var uow = _facade.GetGuestUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                var newGuest = uow.Repository.Create(t);
+                var newGuest = uow.GuestRepository.Create(t);
                 uow.Complete();
                 return newGuest;
             }
@@ -24,9 +24,9 @@ namespace BLL.Services
 
         public bool Delete(int Id)
         {
-            using (var uow = _facade.GetGuestUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                var guest = uow.Repository.Delete(Id);
+                var guest = uow.GuestRepository.Delete(Id);
                 uow.Complete();
                 return guest;
             }
@@ -34,9 +34,9 @@ namespace BLL.Services
 
         public ICollection<Guest> GetAll()
         {
-            using (var uow = _facade.GetGuestUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                var guests = uow.Repository.GetAll();
+                var guests = uow.GuestRepository.GetAll();
                 uow.Complete();
                 return guests;
             }
@@ -44,9 +44,9 @@ namespace BLL.Services
 
         public Guest GetById(int Id)
         {
-            using (var uow = _facade.GetGuestUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                var guest = uow.Repository.GetById(Id);
+                var guest = uow.GuestRepository.GetById(Id);
                 uow.Complete();
                 return guest;
             }
@@ -54,9 +54,9 @@ namespace BLL.Services
 
         public Guest Update(Guest t)
         {
-            using (var uow = _facade.GetGuestUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                Guest gu = uow.Repository.Update(t);
+                Guest gu = uow.GuestRepository.Update(t);
                 uow.Complete();
                 return gu;
             }

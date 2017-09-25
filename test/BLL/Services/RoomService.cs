@@ -14,9 +14,9 @@ namespace BLL.Services
         }
         public Room Create(Room t)
         {
-            using (var uow = _facade.GetRoomUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                var newRoom= uow.Repository.Create(t);
+                var newRoom= uow.RoomRepository.Create(t);
                 uow.Complete();
                 return newRoom;
             }
@@ -24,9 +24,9 @@ namespace BLL.Services
 
         public bool Delete(int Id)
         {
-            using (var uow = _facade.GetRoomUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                var room = uow.Repository.Delete(Id);
+                var room = uow.RoomRepository.Delete(Id);
                 uow.Complete();
                 return room;
             }
@@ -34,9 +34,9 @@ namespace BLL.Services
 
         public ICollection<Room> GetAll()
         {
-            using (var uow = _facade.GetRoomUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                var rooms = uow.Repository.GetAll();
+                var rooms = uow.RoomRepository.GetAll();
                 uow.Complete();
                 return rooms;
             }
@@ -44,9 +44,9 @@ namespace BLL.Services
 
         public Room GetById(int Id)
         {
-            using (var uow = _facade.GetRoomUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                var room = uow.Repository.GetById(Id);
+                var room = uow.RoomRepository.GetById(Id);
                 uow.Complete();
                 return room;
             }
@@ -54,9 +54,9 @@ namespace BLL.Services
 
         public Room Update(Room t)
         {
-            using (var uow = _facade.GetRoomUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                Room ro = uow.Repository.Update(t);
+                Room ro = uow.RoomRepository.Update(t);
                 uow.Complete();
                 return ro;
             }

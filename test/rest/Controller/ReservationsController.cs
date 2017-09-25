@@ -34,6 +34,9 @@ namespace rest.Controller
         // POST: api/Reservations
         public void Post([FromBody]Reservation value)
         {
+            value.Guest.Reservation = value;
+            foreach (Room room in value.Rooms)
+                room.Reservations.Add(value);
             _reservationService.Create(value);
         }
 

@@ -20,13 +20,6 @@ namespace DAL.Repositories
 
         public Reservation Create(Reservation t)
         {
-            _context.Guests.Attach(t.Guest);
-            foreach (Room room in t.Rooms)
-            {
-                _context.Rooms.Attach(room);
-                _context.RoomTypes.Attach(room.Type);
-            }
-
             return _context.Reservations.Add(t);
         }
 

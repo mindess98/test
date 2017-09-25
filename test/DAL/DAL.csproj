@@ -64,9 +64,11 @@
     <Compile Include="Repositories\RoomTypeRepository.cs" />
     <Compile Include="UnitsOfWork\GuestUoW.cs" />
     <Compile Include="UnitsOfWork\IUnitofWork.cs" />
+    <Compile Include="UnitsOfWork\IUoW.cs" />
     <Compile Include="UnitsOfWork\ReservationUoW.cs" />
     <Compile Include="UnitsOfWork\RoomTypeUoW.cs" />
     <Compile Include="UnitsOfWork\RoomUoW.cs" />
+    <Compile Include="UnitsOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">

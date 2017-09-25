@@ -14,28 +14,24 @@ namespace BLL.Services
         }
         public Reservation Create(Reservation t)
         {
-            using (var uow = _facade.GetReservationUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                using (var uowG = _facade.GetGuestUoW)
+                Guest g = uow.GuestRepository.GetById(t.Guest.Id);
+                if(g == null)
                 {
-                    Guest g = uowG.Repository.GetById(t.Guest.Id);
-                    if(g == null)
-                    {
-                        uowG.Repository.Create(t.Guest);
-                    }
-
-                    var newReservation = uow.Repository.Create(t);
-                    uow.Complete();
-                    return newReservation;
+                    g = uow.GuestRepository.Create(t.Guest);
                 }
+                var newReservation = uow.ReservationRepository.Create(t);
+                uow.Complete();
+                return newReservation;
             }
         }
 
         public bool Delete(int Id)
         {
-            using (var uow = _facade.GetReservationUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                var reservation = uow.Repository.Delete(Id);
+                var reservation = uow.ReservationRepository.Delete(Id);
                 uow.Complete();
                 return reservation;
             }
@@ -43,9 +39,9 @@ namespace BLL.Services
 
         public ICollection<Reservation> GetAll()
         {
-            using (var uow = _facade.GetReservationUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                var reservations = uow.Repository.GetAll();
+                var reservations = uow.ReservationRepository.GetAll();
                 uow.Complete();
                 return reservations;
             }
@@ -53,9 +49,9 @@ namespace BLL.Services
 
         public Reservation GetById(int Id)
         {
-            using (var uow = _facade.GetReservationUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                var reservation = uow.Repository.GetById(Id);
+                var reservation = uow.ReservationRepository.GetById(Id);
                 uow.Complete();
                 return reservation;
             }
@@ -63,9 +59,9 @@ namespace BLL.Services
 
         public Reservation Update(Reservation t)
         {
-            using (var uow = _facade.GetReservationUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                Reservation re = uow.Repository.Update(t);
+                Reservation re = uow.ReservationRepository.Update(t);
                 uow.Complete();
                 return re;
             }

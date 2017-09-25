@@ -14,9 +14,9 @@ namespace BLL.Services
         }
         public RoomType Create(RoomType t)
         {
-            using (var uow = _facade.GetRoomTypeUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                var newRoomType = uow.Repository.Create(t);
+                var newRoomType = uow.RoomTypeRepository.Create(t);
                 uow.Complete();
                 return newRoomType;
             }
@@ -24,9 +24,9 @@ namespace BLL.Services
 
         public bool Delete(int Id)
         {
-            using (var uow = _facade.GetRoomTypeUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                var roomType = uow.Repository.Delete(Id);
+                var roomType = uow.RoomTypeRepository.Delete(Id);
                 uow.Complete();
                 return roomType;
             }
@@ -34,27 +34,27 @@ namespace BLL.Services
 
         public ICollection<RoomType> GetAll()
         {
-            using (var uow = _facade.GetRoomTypeUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                var roomTypes = uow.Repository.GetAll();
+                var roomTypes = uow.RoomTypeRepository.GetAll();
                 return roomTypes;
             }
         }
 
         public RoomType GetById(int Id)
         {
-            using (var uow = _facade.GetRoomTypeUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                var roomType = uow.Repository.GetById(Id);
+                var roomType = uow.RoomTypeRepository.GetById(Id);
                 return roomType;
             }
         }
 
         public RoomType Update(RoomType t)
         {
-            using (var uow = _facade.GetRoomTypeUoW)
+            using (var uow = _facade.UnitOfWork)
             {
-                RoomType rt = uow.Repository.Update(t);
+                RoomType rt = uow.RoomTypeRepository.Update(t);
                 uow.Complete();
                 return rt;
             }

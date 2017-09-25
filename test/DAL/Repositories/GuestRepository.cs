@@ -20,8 +20,8 @@ namespace DAL.Repositories
 
         public Guest Create(Guest t)
         {
-            _context.Guests.Add(t);
-            return t;
+
+            return _context.Guests.Add(t);
         }
 
         public bool Delete(int Id)
